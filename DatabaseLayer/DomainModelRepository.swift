@@ -44,6 +44,25 @@ public class DomainModelRepository<MO: DomainModel>: DomainRepository {
         }
     }
     
+    public func delete(entity: MO.DomainModelType) -> Result<Bool, Error> {
+        var format = ""
+        for key in entity.getKeys() {
+            format.append("\(key) == %@ AND ")
+        }
+        format.removeLast(4)
+        let predicate = NSPredicate.init(format: format, argumentArray: entity.getValues())
+        let result = repository.get(predicate: predicate, sortDescriptors: nil)
+        switch result {
+        case .success(let items):
+            for item in items {
+                _ = repository.delete(entity: item)
+            }
+            return .success(true)
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+    
     public func deleteAll() -> Result<Bool, Error> {
         return repository.deleteAll()
     }

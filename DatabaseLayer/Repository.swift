@@ -33,6 +33,8 @@ protocol DomainRepository {
 
     func create(entity: ManagedObjectType.DomainModelType) -> Result<Bool, Error>
     
+    func delete(entity: ManagedObjectType.DomainModelType) -> Result<Bool, Error>
+    
     func deleteAll() -> Result<Bool, Error>
     
     func save()

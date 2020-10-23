@@ -10,7 +10,12 @@ import Foundation
 import CoreData
 
 public protocol DomainModel: NSManagedObject {
-    associatedtype DomainModelType
+    associatedtype DomainModelType: DatabaseModel
     func createFromDomainModel(_ model: DomainModelType)
     func toDomainModel() -> DomainModelType
+}
+
+public protocol DatabaseModel {
+    func getKeys() -> [String]
+    func getValues() -> [Any]
 }
