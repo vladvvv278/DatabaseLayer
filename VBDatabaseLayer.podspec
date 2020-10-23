@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-s.name             = 'dblayer'  
+s.name             = 'VBDatabaseLayer'  
 s.version          = '0.0.2'  
 s.summary          = 'Database Layer' 
 s.description      = "Database Layer"
