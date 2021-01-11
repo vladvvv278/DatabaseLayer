@@ -49,7 +49,7 @@ public class CoreDataContextProvider {
 
     // MARK: - Core Data Stack
     private(set) lazy var managedObjectContext: NSManagedObjectContext = {
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
 
         managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
 
